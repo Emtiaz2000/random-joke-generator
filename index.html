@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Mulish:wght@300&display=swap" rel="stylesheet">
+    <!-- css  -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Mulish', sans-serif;
+        }
+
+        .container {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color:#a4a4eb;
+        }
+
+        .card {
+            background-color: #F15A24 ;
+            width: 70%;
+            height: 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+        }
+
+        .icon {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+            padding-top:20px;
+
+        }
+
+        .icon>h3 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .card-body {
+            height: 100%;
+            width: 80%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            overflow:hidden;
+        }
+        .card-body .button{
+            height:50px;
+            width:80px;
+            font-weight:bold;
+            background-color: #40E0D0;
+            /* outline:none; */
+            border:1px solid  #1e9185;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .card-body > p{
+            color:rgb(236, 226, 85);
+            font-size: 1rem;
+            font-weight: bold;
+            text-align:center;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="card">
+            <div class='icon'><img src="https://assets.chucknorris.host/img/avatar/chuck-norris.png" alt="">
+                <h3 class="card-title text-center">Random jokes</h3>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Chuck Norris recently killed a charging Rhino with a #2 lead pencil.</p>
+                <button class="button">Next Joke</button>
+            </div>
+            
+        </div>
+
+    </div>
+
+    <script>
+        // get the api from ="https://api.chucknorris.io/"
+
+        //declaring variable from html
+        const joke = document.querySelector('.card-text')
+        const button = document.querySelector('.button')
+        //fetching joke from api
+        async function randomJoke() {
+            const result = await fetch('https://api.chucknorris.io/jokes/random')
+                .then(jokedata => jokedata.json())
+            joke.textContent = result.value
+        }
+       
+        //lessening click event
+        button.addEventListener('click', randomJoke)
+
+
+    </script>
+</body>
+
+</html>
